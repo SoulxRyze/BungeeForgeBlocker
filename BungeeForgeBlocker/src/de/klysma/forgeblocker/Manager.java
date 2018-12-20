@@ -51,17 +51,6 @@ public class Manager {
             configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
 
             if(created){
-                BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
-
-                writer.write("//Das ist ein BungeeCord Forge Blocker von soulxryze.com! Dieser Code ist Open Source");
-                writer.flush();
-                writer.write("\n");
-                writer.flush();
-                writer.write("//Die Config updatet sich automatisch alle 10 Millisekunden!");
-                writer.flush();
-                writer.write("\n");
-                writer.flush();
-                writer.close();
                 configuration.set("prefix", "§6ForgeBlocker §8§l| §a");
                 configuration.set("kickMessage", "§cDu wurdest gekickt!\n§4§lForge ist auf diesem Server nicht erlaubt!\n§aBitte deaktiviere Forge und komme mit einem anderen Client wieder Vanilla/Optifine/Labymod!");
                 saveConfig();
