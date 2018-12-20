@@ -51,6 +51,9 @@ public class Manager {
             configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
 
             if(created){
+                configuration.set("bypass-permission", "de.klysma.bypassForge");
+                configuration.set("get-forgejoin-message", "de.klysma.messageForgeJoin");
+                configuration.set("sendTeamMessage", true);
                 configuration.set("prefix", "§6ForgeBlocker §8§l| §a");
                 configuration.set("kickMessage", "§cDu wurdest gekickt!\n§4§lForge ist auf diesem Server nicht erlaubt!\n§aBitte deaktiviere Forge und komme mit einem anderen Client wieder Vanilla/Optifine/Labymod!");
                 saveConfig();
@@ -58,6 +61,9 @@ public class Manager {
         }catch (Exception exe){}
 
         if(configuration != null) {
+            Main.bypassPerm = configuration.getString("bypass-permission");
+            Main.getMessagePerm = configuration.getString("get-forgejoin-message");
+            Main.teamMessage = configuration.getBoolean("sendTeamMessage");
             Main.prefix = configuration.getString("prefix");
             Main.kickMessage = configuration.getString("kickMessage");
         }
